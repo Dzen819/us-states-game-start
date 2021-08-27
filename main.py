@@ -15,6 +15,8 @@ n = 0
 while game_is_on:
     answer = screen.textinput(f"Guessed {n}/50", "What's the next state?").title()
     if answer == "Exit":
+        list_of_states = pandas.DataFrame(l_states)
+        list_of_states.to_csv("my_states.csv")
         break
     for state in l_states:
         if answer == state:
@@ -32,5 +34,3 @@ while game_is_on:
             writer.write(f"{state}", align="center", font=24)
             game_is_on = False
 
-list_of_states = pandas.DataFrame(l_states)
-list_of_states.to_csv("my_states.csv")
